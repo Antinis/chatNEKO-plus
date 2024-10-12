@@ -29,14 +29,14 @@ def add_new_image_urls(proxies, name, total=25):
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0",
         "Authorization": "Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA",
-        "X-Csrf-Token": "a6c13b9f02aab8be4ae9c1c011ba65184ef027f968b83d434c5f15da5517dcbaf75d5dcbef50bcd0dc8582298c7911d774a498f3b8601636415f16be6f3a0215b46fcc42f9a1b8001f456467766bc684",
-        "Cookie": """auth_token=2d9f1f99f9969214e85606abe777917e281f435b; ct0=a6c13b9f02aab8be4ae9c1c011ba65184ef027f968b83d434c5f15da5517dcbaf75d5dcbef50bcd0dc8582298c7911d774a498f3b8601636415f16be6f3a0215b46fcc42f9a1b8001f456467766bc684;""",
+        "X-Csrf-Token": "e43fdab27694d15258786b24a4654812e88006e87a0f15cd4e3b43af1957cc233098600a9a3ba00c2900ca617aa90122e0782726a173348c57946dfefe2df62908bf78c4c692f97cb73fd99e93520ac8",
+        "Cookie": """auth_token=ee739cd77e2b28b5f5a133de99413bced2d27486; ct0=e43fdab27694d15258786b24a4654812e88006e87a0f15cd4e3b43af1957cc233098600a9a3ba00c2900ca617aa90122e0782726a173348c57946dfefe2df62908bf78c4c692f97cb73fd99e93520ac8;""",
     }
 
     tweet_cursor="";
     image_url_list=[];
     for iter in range(5):
-        url="""https://x.com/i/api/graphql/V7H0Ap3_Hh2FyS75OCDO3Q/UserTweets?variables={"userId":\""""+inner_id+"""\","count":20,"cursor":\""""+tweet_cursor+"""\","includePromotedContent":true,"withQuickPromoteEligibilityTweetFields":true,"withVoice":true,"withV2Timeline":true}&features={"rweb_tipjar_consumption_enabled":true,"responsive_web_graphql_exclude_directive_enabled":true,"verified_phone_label_enabled":false,"creator_subscriptions_tweet_preview_api_enabled":true,"responsive_web_graphql_timeline_navigation_enabled":true,"responsive_web_graphql_skip_user_profile_image_extensions_enabled":false,"communities_web_enable_tweet_community_results_fetch":true,"c9s_tweet_anatomy_moderator_badge_enabled":true,"articles_preview_enabled":true,"tweetypie_unmention_optimization_enabled":true,"responsive_web_edit_tweet_api_enabled":true,"graphql_is_translatable_rweb_tweet_is_translatable_enabled":true,"view_counts_everywhere_api_enabled":true,"longform_notetweets_consumption_enabled":true,"responsive_web_twitter_article_tweet_consumption_enabled":true,"tweet_awards_web_tipping_enabled":false,"creator_subscriptions_quote_tweet_preview_enabled":false,"freedom_of_speech_not_reach_fetch_enabled":true,"standardized_nudges_misinfo":true,"tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled":true,"rweb_video_timestamps_enabled":true,"longform_notetweets_rich_text_read_enabled":true,"longform_notetweets_inline_media_enabled":true,"responsive_web_enhance_cards_enabled":false}&fieldToggles={"withArticlePlainText":false}"""
+        url="""https://x.com/i/api/graphql/Tg82Ez_kxVaJf7OPbUdbCg/UserTweets?variables={"userId":\""""+inner_id+"""\","count":20,"cursor":\""""+tweet_cursor+"""\","includePromotedContent":true,"withQuickPromoteEligibilityTweetFields":true,"withVoice":true,"withV2Timeline":true}&features={"rweb_tipjar_consumption_enabled":true,"responsive_web_graphql_exclude_directive_enabled":true,"verified_phone_label_enabled":false,"creator_subscriptions_tweet_preview_api_enabled":true,"responsive_web_graphql_timeline_navigation_enabled":true,"responsive_web_graphql_skip_user_profile_image_extensions_enabled":false,"communities_web_enable_tweet_community_results_fetch":true,"c9s_tweet_anatomy_moderator_badge_enabled":true,"articles_preview_enabled":true,"tweetypie_unmention_optimization_enabled":true,"responsive_web_edit_tweet_api_enabled":true,"graphql_is_translatable_rweb_tweet_is_translatable_enabled":true,"view_counts_everywhere_api_enabled":true,"longform_notetweets_consumption_enabled":true,"responsive_web_twitter_article_tweet_consumption_enabled":true,"tweet_awards_web_tipping_enabled":false,"creator_subscriptions_quote_tweet_preview_enabled":false,"freedom_of_speech_not_reach_fetch_enabled":true,"standardized_nudges_misinfo":true,"tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled":true,"rweb_video_timestamps_enabled":true,"longform_notetweets_rich_text_read_enabled":true,"longform_notetweets_inline_media_enabled":true,"responsive_web_enhance_cards_enabled":false}&fieldToggles={"withArticlePlainText":false}"""
 
         response = requests.get(
             url=url,
@@ -46,6 +46,7 @@ def add_new_image_urls(proxies, name, total=25):
 
         # 打印响应结果
         if response.status_code!=200:
+            # print(response.status_code)
             return False, "推文列表获取失败，请检查到X服务器的网络连接";
 
         table=json.loads(response.text);
